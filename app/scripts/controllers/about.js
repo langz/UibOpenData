@@ -8,10 +8,8 @@
  * Controller of the uibOpenDataApp
  */
 angular.module('uibOpenDataApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('SubjectCtrl', ['$scope','$routeParams', 'Subjects2014', function ($scope, $routeParams, Subjects2014) {
+   
+   console.log($routeParams.subjectCode);
+   console.log(Subjects2014.findSubject($routeParams.subjectCode));
+ }]);
