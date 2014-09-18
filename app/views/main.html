@@ -1,6 +1,6 @@
    <div class="header">
      <ul class="nav nav-pills pull-right">
-       <li class="active"><a ng-href="#">Home</a></li>
+       <li class="active"><a ng-href="#">Search</a></li>
        <li><a ng-href="#/mySubjects">My Subjects ({{getNumberOfSubjects()}})</a></li>
      </ul>
      <h3 class="text-muted">UibSubjects</h3>
@@ -68,6 +68,7 @@
            <th class="col-sm-2"><a ng-click="orderByField='terminkode'; reverseSort = !reverseSort">
              Semester <span ng-show="orderByField == 'terminkode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
            </a></th>
+           <th class="col-sm-2"></th>
          </tr>
        </div>
        <div class="row">
@@ -77,6 +78,7 @@
            <td class="col-sm-2">{{subject.studienivakode}}</td>
            <td class="col-sm-2">{{subject.arstall}}</td>
            <td class="col-sm-2">{{subject.terminkode}}</td>
+           <td class="col-sm-2"><span class="glyphicon glyphicon-plus danger" ng-click="addSubject(subject)"></span></td>
          </tr>
        </div>
      </table>

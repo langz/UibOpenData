@@ -17,7 +17,7 @@ angular.module('uibOpenDataApp')
   console.log("stre: " + $scope.mySubjects.length);
 
   if(Subjects2014.getSubjects().length==0){
-    
+
     Subjects2014.populate2014V(function (result) {
       angular.forEach(result,function(item) {
         item.arstall = parseInt(item.arstall);
@@ -49,5 +49,13 @@ angular.module('uibOpenDataApp')
   }
   $scope.getNumberOfSubjects = function(){
     return $scope.mySubjects.length;
+  }
+  $scope.addSubject = function(subjectInput){
+    if(!Subjects2014.findmySubjects(subjectInput.emnekode)){
+      Subjects2014.addmySubjects(subjectInput)
+      $scope.mySubjects = Subjects2014.getmySubjects();
+    }
+    else{
+    }
   }
 }]);
