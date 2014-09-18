@@ -1,76 +1,83 @@
-   <p class="lead">  
-    Type in your query below and you'll be good to go!
-  </p>
-  <div class="row">
-  <div class="input-group col-sm-12">
-<input type="text" class="col-sm-8 form-control" ng-model="query" placeholder="Query"/>
- <span class="input-group-btn">
- <button title="Click for search" type="button" class="btn btn-primary">
-  <i class="glyphicon glyphicon-search"></i>
-  </button>
-   </span>
-</div>
-                  
-</div>
-<div class="row">
-<div class="input-group radio">
-   <div class="radio-inline">
-    <label>
-      <input ng-click="radio='emnekode'" checked type="radio" name="inlineRadioOptions" id="inlineRadio1">Code
-    </label>
-  </div>
-   <div class="radio-inline">
-    <label>
-      <input ng-click="radio='studiepoeng'" type="radio" name="inlineRadioOptions" id="inlineRadio2">Points
-    </label>
-    </div>
-       <div class="radio-inline">
-    <label>
-      <input ng-click="radio='studienivakode'" type="radio" name="inlineRadioOptions" id="inlineRadio3">Level
-    </label>
-    </div>
-          <div class="radio-inline">
-    <label>
-      <input ng-click="radio='arstall'" type="radio" name="inlineRadioOptions" id="inlineRadio4">Year
-    </label>
-    </div>
-              <div class="radio-inline">
-    <label>
-      <input ng-click="radio='terminkode'" type="radio" name="inlineRadioOptions" id="inlineRadio5">Semester
-    </label>
-    </div>
-  </div>
-  </div>
+   <div class="header">
+     <ul class="nav nav-pills pull-right">
+       <li class="active"><a ng-href="#">Home</a></li>
+       <li><a ng-href="#/mySubjects">My Subjects ({{getNumberOfSubjects()}})</a></li>
+     </ul>
+     <h3 class="text-muted">UibSubjects</h3>
+   </div>
+   <p class="lead">
+     Type in your query below and you'll be good to go!
+   </p>
+   <div class="row">
+     <div class="input-group col-sm-12">
+       <input type="text" class="col-sm-8 form-control" ng-model="query" placeholder="Query"/>
+       <span class="input-group-btn">
+         <button title="Click for search" type="button" class="btn btn-primary">
+           <i class="glyphicon glyphicon-search"></i>
+         </button>
+       </span>
+     </div>
 
-<div class="row ">
-        <table class="table table-hover col-sm-12">
-        <div class="row">
-            <tr>
-                <th class="col-sm-2">   <a ng-click="orderByField='emnekode'; reverseSort = !reverseSort">
-            Code <span ng-show="orderByField == 'emnekode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
-          </a></th>
-                <th class="col-sm-2"><a ng-click="orderByField='studiepoeng'; reverseSort = !reverseSort">
-            Points <span ng-show="orderByField == 'studiepoeng'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
-          </a></th>
-                <th class="col-sm-2"><a ng-click="orderByField='studienivakode'; reverseSort = !reverseSort">
-            Level <span ng-show="orderByField == 'studienivakode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
-          </a></th>
-                <th class="col-sm-2"><a ng-click="orderByField='arstall'; reverseSort = !reverseSort">
-            Year <span ng-show="orderByField == 'arstall'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
-          </a></th>
-                <th class="col-sm-2"><a ng-click="orderByField='terminkode'; reverseSort = !reverseSort">
-          Semester <span ng-show="orderByField == 'terminkode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
-          </a></th>
-            </tr>
-            </div>
-            <div class="row">
-            <tr ng-click="goToSubject(subject.emnekode)" ng-repeat="subject in subjects | orderBy:orderByField:reverseSort | searchFor:query:radio">
-                <td class="col-sm-2">{{subject.emnekode}}</td>
-                <td class="col-sm-2">{{subject.studiepoeng}}</td>
-                <td class="col-sm-2">{{subject.studienivakode}}</td>
-                <td class="col-sm-2">{{subject.arstall}}</td>
-                <td class="col-sm-2">{{subject.terminkode}}</td>
-            </tr>
-         </div>
-        </table>
-  </div>
+   </div>
+   <div class="row">
+     <div class="input-group radio">
+       <div class="radio-inline">
+         <label>
+           <input ng-click="radio='emnekode'" checked type="radio" name="inlineRadioOptions" id="inlineRadio1">Code
+         </label>
+       </div>
+       <div class="radio-inline">
+         <label>
+           <input ng-click="radio='studiepoeng'" type="radio" name="inlineRadioOptions" id="inlineRadio2">Points
+         </label>
+       </div>
+       <div class="radio-inline">
+         <label>
+           <input ng-click="radio='studienivakode'" type="radio" name="inlineRadioOptions" id="inlineRadio3">Level
+         </label>
+       </div>
+       <div class="radio-inline">
+         <label>
+           <input ng-click="radio='arstall'" type="radio" name="inlineRadioOptions" id="inlineRadio4">Year
+         </label>
+       </div>
+       <div class="radio-inline">
+         <label>
+           <input ng-click="radio='terminkode'" type="radio" name="inlineRadioOptions" id="inlineRadio5">Semester
+         </label>
+       </div>
+     </div>
+   </div>
+
+   <div class="row ">
+     <table class="table table-hover col-sm-12">
+       <div class="row">
+         <tr>
+           <th class="col-sm-2">   <a ng-click="orderByField='emnekode'; reverseSort = !reverseSort">
+             Code <span ng-show="orderByField == 'emnekode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+           </a></th>
+           <th class="col-sm-2"><a ng-click="orderByField='studiepoeng'; reverseSort = !reverseSort">
+             Points <span ng-show="orderByField == 'studiepoeng'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+           </a></th>
+           <th class="col-sm-2"><a ng-click="orderByField='studienivakode'; reverseSort = !reverseSort">
+             Level <span ng-show="orderByField == 'studienivakode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+           </a></th>
+           <th class="col-sm-2"><a ng-click="orderByField='arstall'; reverseSort = !reverseSort">
+             Year <span ng-show="orderByField == 'arstall'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+           </a></th>
+           <th class="col-sm-2"><a ng-click="orderByField='terminkode'; reverseSort = !reverseSort">
+             Semester <span ng-show="orderByField == 'terminkode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+           </a></th>
+         </tr>
+       </div>
+       <div class="row">
+         <tr ng-click="goToSubject(subject.emnekode)" ng-repeat="subject in subjects | orderBy:orderByField:reverseSort | searchFor:query:radio">
+           <td class="col-sm-2">{{subject.emnekode}}</td>
+           <td class="col-sm-2">{{subject.studiepoeng}}</td>
+           <td class="col-sm-2">{{subject.studienivakode}}</td>
+           <td class="col-sm-2">{{subject.arstall}}</td>
+           <td class="col-sm-2">{{subject.terminkode}}</td>
+         </tr>
+       </div>
+     </table>
+   </div>

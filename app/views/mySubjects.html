@@ -1,0 +1,43 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#/mySubjects">My Subjects ({{getNumberOfSubjects()}})</a></li>
+  </ul>
+  <h3 class="text-muted">UibSubjects</h3>
+</div>
+<div class="row ">
+  <table class="table table-hover col-sm-12">
+    <div class="row">
+      <tr>
+        <th class="col-sm-2">   <a ng-click="orderByField='emnekode'; reverseSort = !reverseSort">
+          Code <span ng-show="orderByField == 'emnekode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+        </a></th>
+        <th class="col-sm-2"><a ng-click="orderByField='studiepoeng'; reverseSort = !reverseSort">
+          Points <span ng-show="orderByField == 'studiepoeng'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+        </a></th>
+        <th class="col-sm-2"><a ng-click="orderByField='studienivakode'; reverseSort = !reverseSort">
+          Level <span ng-show="orderByField == 'studienivakode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+        </a></th>
+        <th class="col-sm-2"><a ng-click="orderByField='arstall'; reverseSort = !reverseSort">
+          Year <span ng-show="orderByField == 'arstall'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+        </a></th>
+        <th class="col-sm-2"><a ng-click="orderByField='terminkode'; reverseSort = !reverseSort">
+          Semester <span ng-show="orderByField == 'terminkode'"><span ng-show="!reverseSort" class="glyphicon glyphicon-arrow-up"></span><span ng-show="reverseSort" class="glyphicon glyphicon-arrow-down"></span></span>
+        </a></th>
+        <th class="col-sm-2">
+
+        </th>
+      </tr>
+    </div>
+    <div class="row">
+      <tr ng-click="goToSubject(subject.emnekode)" ng-repeat="subject in subjects | orderBy:orderByField:reverseSort | searchFor:query:radio">
+        <td class="col-sm-2">{{subject.emnekode}}</td>
+        <td class="col-sm-2">{{subject.studiepoeng}}</td>
+        <td class="col-sm-2">{{subject.studienivakode}}</td>
+        <td class="col-sm-2">{{subject.arstall}}</td>
+        <td class="col-sm-2">{{subject.terminkode}}</td>
+        <td><span class="glyphicon glyphicon-minus danger" ng-click="removeSubject(subject)"></span></td>
+      </tr>
+    </div>
+  </table>
+</div>
